@@ -3,6 +3,7 @@
 # Part 1
 
 def sum arr
+	sum = 0
 	arr.each do |element|
 		sum += element
 	end
