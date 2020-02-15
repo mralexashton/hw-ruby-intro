@@ -3,7 +3,6 @@
 # Part 1
 
 def sum arr
-	sum = 0
 	arr.each do |element|
 		sum += element
 	end
@@ -11,7 +10,24 @@ def sum arr
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+	largest = nil
+	second_largest = nil
+	arr.each do |element|
+		if largest == nil or element > largest 
+			second_largest = largest
+			largest = element
+		elsif second_largest == nil or element > second_largest
+			second_largest = element
+		end
+	end
+	if largest == nil
+		sum = 0
+	elsif second_largest == nil
+		sum = largest
+	else
+		sum = largest + second_largest
+	end
+	sum
 end
 
 def sum_to_n? arr, n
