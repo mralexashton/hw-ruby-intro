@@ -31,7 +31,14 @@ def max_2_sum arr
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  arr.each do |element1|
+  	arr.each do |element2|
+  		if ( n == element1 + element2 ) and arr.index(element1) != arr.index(element2)
+  			return true
+  		end
+  	end
+  end
+  return false
 end
 
 # Part 2
