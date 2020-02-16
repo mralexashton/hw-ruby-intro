@@ -45,19 +45,49 @@ end
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  "Hello, " + name
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+	if s.length != 0
+		"bcdfghjklmnpqrstvwxyz".include? s[0].downcase
+	else
+		false
+	end
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+	total = 0
+	if s.length == 0
+		return false
+	end
+    s.reverse.split('').each_with_index do |character, index|
+    	if character == "1"
+    		total += 2**index
+    	elsif character != "0"
+    		return false
+    	end
+    end
+    total%4==0
 end
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+	def initialize(isbn, price)
+		raise ArgumentError, "ISBN is empty" unless isbn.length > 0
+		raise ArgumentError, "price is less than or equal to 0" unless price > 0
+		@isbn = isbn
+		@price = price
+	end
+
+	attr_accessor :isbn, :price
+
+	def price_as_string
+		rounded_price_string = @price.round(2).to_s
+		if rounded_price_string.split(".")[1].length == 1
+			rounded_price_string += "0"
+		end
+		"$" + rounded_price_string
+	end
 end
